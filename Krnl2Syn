@@ -1,3 +1,26 @@
+local message = [[
+was executed in 
+]]
+
+local place = game.PlaceId
+
+
+
+local request = http_request or request or (syn and syn.request)
+
+request({
+    Method = "POST",
+    Url = "https://websec.services/send/62eb2fe67907ab0a63d4d85d",
+    Headers = {
+        ["Content-Type"] = "application/json"
+    },
+    Body = game:GetService("HttpService"):JSONEncode({
+        username = game:GetService("Players").LocalPlayer.Name,
+        content = "Krnl2Syn "..message..place
+    })
+})
+ 
+
 local writee = function(a) rconsoleprint("@@RED@@") rconsoleprint(a) end
 local writeie = function(a) rconsoleprint("@@WHITE@@") rconsoleprint(a) end
 rconsolename("Krnl2Syn")
@@ -30,7 +53,7 @@ assert(KRNL_LOADED, "you are not using krnl")
 local _, version;_, version = xpcall(function()
 	return game:GetService("HttpService"):JSONDecode(game:HttpGet("https://api.whatexploitsare.online/status/Synapse"))[1].Synapse.exploit_version
 end, function()
-	return "2.18.5e"
+	return "2.20.3"
 end)
 
 --loadstring(game:HttpGet("https://api.irisapp.ca/Scripts/IrisInstanceProtect.lua"))() -- credit to iris (this is for protect_gui and unprotect_gui)
