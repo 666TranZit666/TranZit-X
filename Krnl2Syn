@@ -28,12 +28,12 @@ custom dll script was executed. krnl will now work like synaspe for testing exec
         end
 after that check f9]])
 
-[[assert(KRNL_LOADED, "you are not using krnl")
+assert(KRNL_LOADED, "you are not using krnl")
 
 local _, version;_, version = xpcall(function()
 	return game:GetService("HttpService"):JSONDecode(game:HttpGet("https://api.whatexploitsare.online/status/Synapse"))[1].Synapse.exploit_version
 end, function()
-	return "2.20.10d"
+	return "2.22.0"
 end)
 
 --loadstring(game:HttpGet("https://api.irisapp.ca/Scripts/IrisInstanceProtect.lua"))() -- credit to iris (this is for protect_gui and unprotect_gui)
@@ -85,7 +85,7 @@ do -- hooks
 	end)
 	hookfunction(http_request, request)
 
-	[ -- unused since its useless, but its cool ig
+	--[[ -- unused since its useless, but its cool ig
 	local oldd;oldd = hookfunction(Drawing.new, function(class) -- same drawing object functionality
 		local obj = oldd(class)
 		local t = {
@@ -121,9 +121,9 @@ do -- hooks
 		})
 		return t
 	end)
-	]
+	]]
 
-	[local olds;olds = hookfunction(saveinstance, function(t) -- same saveinstance functionality
+	local olds;olds = hookfunction(saveinstance, function(t) -- same saveinstance functionality
 		local s = {
 			Decompile = false,
 			NilInstances = false,
@@ -374,7 +374,7 @@ do -- syn library
 	--define("protect_gui", ProtectInstance, t) -- credit to iris (https://api.irisapp.ca/Scripts/docs/IrisProtectInstance)
 	--define("unprotect_gui", UnProtectInstance, t)
 
-	[local Protected = {}
+	--[[local Protected = {}
 	define("protect_gui", function(obj)
 		assert(typeof(obj) == "Instance", "bad argument #1 to 'protect_gui' (Instance expected, got "..typeof(obj)..")")
 		local p = obj.parent
@@ -402,7 +402,7 @@ do -- syn library
 		end
 	end, t)]]
 	
-[[	define("is_beta", function()
+	define("is_beta", function()
 		return false
 	end, t)
 	define("request", request, t)
@@ -468,6 +468,4 @@ define("tohex", function(a)
 	return tonumber(string.format("%08x", a % 4294967296))
 end, bit)
 setreadonly(bit, true)
--- pasted from synapse to scriptware]]
-
-loadstring(game:HttpGet('https://raw.githubusercontent.com/666TranZit666/666tranzit666.github.io/main/work/project-krnl.html'))()
+-- pasted from synapse to scriptware
